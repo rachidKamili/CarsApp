@@ -39,7 +39,6 @@ public class CarsFragment extends Fragment {
 
         setRetainInstance(true);
         bindRecyclerView(rootView);
-        prepareMovieData();
 
         return rootView;
     }
@@ -57,12 +56,4 @@ public class CarsFragment extends Fragment {
         mCarList.add(car);
         mAdapter.notifyDataSetChanged();
     }
-
-    private void prepareMovieData() {
-        mCarList.add(new Car("model 1", "type 1", "year 1"));
-        mCarList.add(new Car("model 2", "type 2", "year 2"));
-        mCarList.add(new Car("model 3", "type 3", "year 3"));
-        mAdapter.notifyDataSetChanged();
-    }
-
 }

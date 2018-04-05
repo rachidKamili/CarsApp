@@ -45,24 +45,24 @@ public class MainActivity extends AppCompatActivity implements AddCarFragment.On
     }
 
     public void carListToggle(View view) {
-        if (((Button) view).getText().toString().toLowerCase().contains("remove")) {
-            CarsFragment carsFragment = (CarsFragment) fragmentManager.findFragmentByTag(CARS_FRAG_TAG);
+        CarsFragment carsFragment = (CarsFragment) fragmentManager.findFragmentByTag(CARS_FRAG_TAG);
+        if (carsFragment != null && carsFragment.isAdded()) {
             fragmentManager.beginTransaction().remove(carsFragment).commit();
             ((Button) view).setText("Show Car List");
         } else {
-            fragmentManager.beginTransaction().add(R.id.flCarsHolder, new CarsFragment(), CARS_FRAG_TAG)
+            fragmentManager.beginTransaction().add(R.id.flCarsHolder, carsFragment, CARS_FRAG_TAG)
                     .addToBackStack(CARS_FRAG_TAG).commit();
             ((Button) view).setText("Remove Car List");
         }
     }
 
     public void addCarToggle(View view) {
-        if (((Button) view).getText().toString().toLowerCase().contains("remove")) {
-            AddCarFragment addCarFragment = (AddCarFragment) fragmentManager.findFragmentByTag(ADD_CAR_FRAG_TAG);
+        AddCarFragment addCarFragment = (AddCarFragment) fragmentManager.findFragmentByTag(ADD_CAR_FRAG_TAG);
+        if (addCarFragment != null && addCarFragment.isAdded()) {
             fragmentManager.beginTransaction().remove(addCarFragment).commit();
             ((Button) view).setText("Show Adding Car");
         } else {
-            fragmentManager.beginTransaction().add(R.id.flAddingCarHolder, new AddCarFragment(), ADD_CAR_FRAG_TAG)
+            fragmentManager.beginTransaction().add(R.id.flAddingCarHolder, addCarFragment, ADD_CAR_FRAG_TAG)
                     .addToBackStack(ADD_CAR_FRAG_TAG).commit();
             ((Button) view).setText("Remove Adding Car");
         }
