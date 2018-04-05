@@ -9,11 +9,17 @@
     tools:context=".MainActivity">
 
     <FrameLayout
+        android:background="@android:color/holo_blue_bright"
+        android:layout_margin="20dp"
+        android:animateLayoutChanges="true"
         android:id="@+id/flAddingCarHolder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <FrameLayout
+        android:background="@android:color/holo_orange_light"
+        android:layout_margin="20dp"
+        android:animateLayoutChanges="true"
         android:id="@+id/flCarsHolder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
