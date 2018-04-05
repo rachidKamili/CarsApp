@@ -52,6 +52,11 @@ public class CarsFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    public void addCar(Car car){
+        mCarList.add(car);
+        mAdapter.notifyDataSetChanged();
+    }
+
     private void prepareMovieData() {
         mCarList.add(new Car("model 1", "type 1", "year 1"));
         mCarList.add(new Car("model 2", "type 2", "year 2"));

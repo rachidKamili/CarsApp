@@ -1,6 +1,7 @@
 package mel.kamili.rachid.carsapp.fragments;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,10 +19,30 @@ import mel.kamili.rachid.carsapp.model.Car;
  */
 public class AddCarFragment extends Fragment implements View.OnClickListener {
 
+    OnCarAddedListener mCallback;
+
     private EditText etModel;
     private EditText etType;
     private EditText etYear;
     private Button addBtn;
+
+    public interface OnCarAddedListener {
+        public void onCarAdded(Car car);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (OnCarAddedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnCarAddedListener");
+        }
+    }
 
     public AddCarFragment() {
         // Required empty public constructor
@@ -45,11 +66,18 @@ public class AddCarFragment extends Fragment implements View.OnClickListener {
         addBtn.setOnClickListener(this);
     }
 
+    private void initiateEts(){
+        etModel.setText("");
+        etType.setText("");
+        etYear.setText("");
+    }
+
     @Override
     public void onClick(View v) {
         Car car = new Car(etModel.getText().toString(),
                 etType.getText().toString(),
                 etYear.getText().toString());
-        Toast.makeText(getContext(), car.getModel(), Toast.LENGTH_SHORT).show();
+        mCallback.onCarAdded(car);
+        initiateEts();
     }
 }
