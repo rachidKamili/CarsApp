@@ -37,6 +37,7 @@ public class CarsFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_cars, container, false);
 
+        setRetainInstance(true);
         bindRecyclerView(rootView);
         prepareMovieData();
 
