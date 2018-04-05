@@ -1,4 +1,4 @@
-package mel.kamili.rachid.carsapp;
+package mel.kamili.rachid.carsapp.model;
 
 public class Car {
     private String model;
